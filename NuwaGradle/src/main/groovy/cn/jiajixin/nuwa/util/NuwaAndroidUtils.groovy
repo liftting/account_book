@@ -55,6 +55,12 @@ class NuwaAndroidUtils {
         }
     }
 
+    /**
+     * 混淆时使用上次发版的mapping文件
+     * @param proguardTask
+     * @param mappingFile
+     * @return
+     */
     public static applymapping(DefaultTask proguardTask, File mappingFile) {
         if (proguardTask) {
             if (mappingFile.exists()) {

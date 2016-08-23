@@ -22,6 +22,9 @@ class NuwaProcessor {
             Enumeration enumeration = file.entries();
             JarOutputStream jarOutputStream = new JarOutputStream(new FileOutputStream(optJar));
 
+            /**
+             * jar中所有的class文件
+             */
             while (enumeration.hasMoreElements()) {
                 JarEntry jarEntry = (JarEntry) enumeration.nextElement();
                 String entryName = jarEntry.getName();
@@ -69,6 +72,10 @@ class NuwaProcessor {
                 mv = new MethodVisitor(Opcodes.ASM4, mv) {
                     @Override
                     void visitInsn(int opcode) {
+                        /**
+                         * 构造函数 ，注入代码
+                         * 需要热更新的类要防止被打上ISPREVERIFIED标记
+                         */
                         if ("<init>".equals(name) && opcode == Opcodes.RETURN) {
                             super.visitLdcInsn(Type.getType("Lcn/jiajixin/nuwa/Hack;"));
                         }

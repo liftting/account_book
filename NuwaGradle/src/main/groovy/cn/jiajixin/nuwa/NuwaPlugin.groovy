@@ -54,6 +54,9 @@ class NuwaPlugin implements Plugin<Project> {
                     /**
                      * 这个属性是从控制台输入的,代表之前release版本生成的混淆文件和hash文件目录,这两个文件发版时需要保持
                      * ./gradlew clean nuwaQihooDebugPatch -P NuwaDir=/Users/jason/Documents/nuwa
+                     *
+                     * 先拿上个 有 bug版本的 mapping  hash 文件
+                     *
                      */
 
                     def oldNuwaDir = NuwaFileUtils.getFileFromProperty(project, NUWA_DIR)
@@ -63,14 +66,14 @@ class NuwaPlugin implements Plugin<Project> {
                          * 从
                          */
                         def mappingFile = NuwaFileUtils.getVariantFile(oldNuwaDir, variant, MAPPING_TXT)
-                        NuwaAndroidUtils.applymapping(proguardTask, mappingFile)
+                        NuwaAndroidUtils.applymapping(proguardTask, mappingFile) //修改 混淆task使用的 mapping文件
                     }
                     if (oldNuwaDir) {
                         /**
                          * 如果文件夹存在的话获得各个class的hash
                          */
                         def hashFile = NuwaFileUtils.getVariantFile(oldNuwaDir, variant, HASH_TXT)
-                        hashMap = NuwaMapUtils.parseMap(hashFile)
+                        hashMap = NuwaMapUtils.parseMap(hashFile) //解析文件hash值，以便知道那个文件发生了修噶i
                     }
 
                     def dirName = variant.dirName //  -- /debug

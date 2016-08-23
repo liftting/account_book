@@ -25,6 +25,11 @@ class NuwaFileUtils {
     public static File getFileFromProperty(Project project, String property) {
         def file
         if (project.hasProperty(property)) {
+            /**
+             * ./gradlew clean nuwaDebugPatch -P NuwaDir=/Users/jason/Documents/nuwa
+             *
+             * 获得NuwaDir对应的目录,即上次发包的mapping和hash文件所在目录
+             */
             file = new File(project.getProperties()[property])
             if (!file.exists()) {
                 throw new InvalidUserDataException("${project.getProperties()[property]} does not exist")
