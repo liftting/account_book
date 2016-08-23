@@ -1,0 +1,7 @@
+生成差异化的cmd
+首先是切换到了已经 fix 过bug的分支中，
+
+目录A里面存储的是：
+
+
+/gradlew clean nuwaDebugPatch -P NuwaDir=/
