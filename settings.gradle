@@ -1,1 +1,1 @@
-include ':app', ':NuwaGradle'
+include ':app'
