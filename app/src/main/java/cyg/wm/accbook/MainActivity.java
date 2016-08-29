@@ -1,13 +1,17 @@
 package cyg.wm.accbook;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import cyg.wm.accbook.Hello.Hello;
+import cyg.wm.accplugin.PluginConfig;
+import cyg.wm.accplugin.PluginManager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,6 +25,18 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         TextView textView = (TextView) findViewById(R.id.textview);
         textView.setText(new Hello().say());
+    }
+
+    public void hello(View view) {
+        PluginManager.loadLastVersionPlugin(PluginConfig.PLUGIN_HELLO);
+        try {
+            Class cls = PluginManager.mNowClassLoader.loadClass(PluginManager.getPlugin(PluginConfig.PLUGIN_HELLO).getPluginMeta().mainClass);
+            Intent intent = new Intent(this, cls);
+            startActivity(intent);
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: "cn.jiajixin.nuwa"
 
 android {
     compileSdkVersion 23
@@ -7,29 +6,46 @@ android {
 
     defaultConfig {
         applicationId "cyg.wm.accbook"
-        minSdkVersion 22
+        minSdkVersion 15
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
     }
-//    buildTypes {
-//        release {
-//            minifyEnabled false
-//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-//        }
-//        //配置 混淆模式， 可以在build查看输出文件
-//        debug {
-//            minifyEnabled false
-//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-//        }
-//    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        //配置 混淆模式， 可以在build查看输出文件
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
 }
 
-dependencies {
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
 
+        maven {
+            url uri('../repo')
+        }
+
+    }
+    dependencies {
+        classpath 'com.cyg.plugin:accgradle:1.0.0'
+    }
+}
+
+
+apply plugin: 'patch.account'
+
+dependencies {
     compile 'com.android.support:appcompat-v7:22.2.1'
     compile 'com.android.support:design:22.2.1'
 
-    compile 'cn.jiajixin.nuwa:nuwa:1.0.0'
-
+    //    compile project(':accplugin')
+    compile files('libs/cyg-plugin.jar')
 }

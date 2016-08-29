@@ -1,0 +1,6 @@
+{
+    "name": "zeusplugin_hello",
+    "minVersion": "1",
+    "version": "1",
+    "mainClass": "cyg.wm.hello.MainActivity"
+}

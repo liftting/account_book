@@ -1,0 +1,28 @@
+apply plugin: 'groovy'
+apply plugin: 'maven'
+
+dependencies {
+    compile gradleApi()
+    compile localGroovy()
+    compile 'com.android.tools.build:gradle:1.5.0'
+    compile 'org.ow2.asm:asm:5.0'  // 能够二进制动态生成类
+}
+
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+group = 'com.cyg.plugin'
+version = '1.0.0'
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            //上传到的本地的repo目录
+            repository(url: uri('../repo'))
+        }
+    }
+}
+
