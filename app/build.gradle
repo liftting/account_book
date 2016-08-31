@@ -11,6 +11,12 @@ android {
         versionCode 1
         versionName "1.0"
     }
+
+    lintOptions {
+        abortOnError false
+    }
+
+
     buildTypes {
         release {
             minifyEnabled false
@@ -48,4 +54,8 @@ dependencies {
 
     //    compile project(':accplugin')
     compile files('libs/cyg-plugin.jar')
+    compile project(':cygnet')
+
 }
+
+

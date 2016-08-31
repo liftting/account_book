@@ -8,6 +8,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.cyg.cygnet.base.CtExecManager;
+import com.cyg.cygnet.base.CtResult;
+import com.cyg.cygnet.base.ICallBack;
+import com.cyg.cygnet.base.IParser;
+import com.cyg.cygnet.base.parser.CtStringParser;
 
 import cyg.wm.accbook.Hello.Hello;
 import cyg.wm.accplugin.PluginConfig;
@@ -37,6 +44,15 @@ public class MainActivity extends AppCompatActivity {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    public void net(View view) {
+        CtExecManager.get("http://172.16.14.118:8080/ctwebserver/learn/recent.php?uid=1", new CtStringParser(), new ICallBack<String>() {
+            @Override
+            public void callback(CtResult<String> result) {
+                Toast.makeText(MainActivity.this, result.getMsg(), Toast.LENGTH_SHORT).show();
+            }
+        }, null);
     }
 
     @Override

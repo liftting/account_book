@@ -20,4 +20,10 @@
         android:layout_height="wrap_content"
         android:onClick="hello"
         android:text="click hello" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="net"
+        android:text="click net" />
 </LinearLayout>
