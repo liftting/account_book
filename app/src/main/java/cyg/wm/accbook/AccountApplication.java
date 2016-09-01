@@ -18,7 +18,7 @@ public class AccountApplication extends ZeusBaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        CtExecManager.init(OkhttpStack.getInstance());
+        CtExecManager.init(OkhttpStack.getInstance(this));
     }
 
     @Override

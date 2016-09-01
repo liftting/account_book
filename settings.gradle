@@ -1,1 +1,1 @@
-include ':app', ':accgradle', ':accplugin', ':hello'
+include ':app', ':accgradle', ':accplugin', ':hello', ':cygnet'
