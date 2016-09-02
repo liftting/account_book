@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void net(View view) {
-        CtExecManager.get("http://172.16.14.118:8080/ctwebserver/learn/recent.php?uid=1", new CtStringParser(), new ICallBack<String>() {
+        CtExecManager.get("http://172.16.14.118:8080/ctwebser/learn/recent.php?uid=1", new CtStringParser(), new ICallBack<String>() {
             @Override
             public void callback(CtResult<String> result) {
                 Toast.makeText(MainActivity.this, result.getMsg(), Toast.LENGTH_SHORT).show();

@@ -1,0 +1,24 @@
+1,okio 是为了补充 java.io java.nio
+
+compile 'com.squareup.okio:okio:1.6.0'
+
+2，两个关键的接口
+Sink:
+        -- write()
+        -- flush()
+        -- clode()
+        -- timeout()
+
+
+Source:
+        -- read()
+        -- clode()
+        -- timeout()
+
+
+支持缓冲区的子类接口，
+BufferedSink和BufferedSource
+
+实现类RealBufferedSink,BufferedSource有一个实现类RealBufferedSource
+
+
